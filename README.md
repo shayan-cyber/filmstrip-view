@@ -1,43 +1,89 @@
-# README #
+
+# FlimStrip Template Viewer
 
 This project requires you to develop a website template viewer. The template viewer is modeled after the filmstrip folder view in Windows Explorer.
 
-### Technical Requirements ###
 
-* Develop as a Single Page Application
-* Develop both a front-end component and back-end API to retrieve the data.
-* Use a javascript front-end implementation of your choice, some suggestions might be ReactJS, Angular or AngularJS
-* Create a back-end API implementation with NodeJS/Express
+## Screenshots
 
-### Reference ###
-![Example Filmstrip](https://github.com/techpacker/filmstrip-view/blob/main/images/reference.png)
-
-### Feature Requirements ###
-
-* Display the thumbnail images in a filmstrip view below the main large image
-* Set the thumbnail to have a sliding window with 4 thumbnails visible in the window at a time. 
-* Implement a "next" and "previous" link per the styles provided. The sliding window is not circular, when the first 4 thumbnails appear, the previous link should be disabled. When the end of the thumbnail set is reached, the next link should be disabled.
-  Note: The sliding window may not have a total of 4 thumbnails if the total template count is not evenly divisible by 4. There are 15 templates in the reference data.
-* Example: If there are 15 templates total, then the initial view would show 4 thumbnail images with previous disabled, then clicking "Next" would advance to the next 4 images, next would advance to the next 4, and so on. Finally, there wouild only be 3 images in the sliding window with next disabled and previous enabled.
-* When clicking on a thumbnail, the large image corresponding to that thumbnail should appear in the main window, along with the meta data about that template (ID, Cost, Description, Thumbnail File Name, Image File Name)
-* Per the reference styles and html, the thumbnail image should have a border when selected.
-
-### Reference Data ###
-
-* /data/templates.json - Array of templates and meta data
-* /images/large - Large size images of templates
-* /images/thumbnails - Thumbnail images of templates
-* /images/next.png - Button image for next link
-* /images/previous.png - Button image for previous link
-* index.html - reference HTML
-* /style/style.css - reference CSS
+![App Screenshot](https://i.imgur.com/kjItwAu.png)
 
 
-### What if I have questions? ###
+## Features
 
-* Take your interpretation of the requirements. As long as your interpretation is defensible.
+- Single Page Application with ReactJS
+- Display image as large view in like FilmStrip
+- Carousel/slide of thumbnails below
+- Previous and next button to navigate
+- Paginated data fetching through an nodejs API
+- On Next button click we'll fetch the next page data when 4 images remaining to show for better optimization.(If we have many images then it's not optimal to dumb all data at one through one API endpoint response)
 
-### How do I submit the project? ###
 
-* Submit a URL to a public github/gitlab repo
-* Make sure to include a readme to document any installation steps to run the project
+## Tech Stack
+
+**Client:** React,Vite, Typescript, TailwindCSS
+
+**Server:** Node, Express
+
+
+## Installation
+
+clone the repo
+
+```bash
+git clone https://github.com/shayan-cyber/filmstrip-view.git
+```
+
+
+
+### Backend
+```bash
+cd backend
+npm i
+```
+make a .env file and add
+```bash
+API_URL=http://localhost:3000/
+```
+
+Run the server
+```bash
+npm run dev
+```
+
+### Client
+```bash
+cd client
+npm i
+```
+make a .env file and add
+```bash
+API_URL=http://localhost:3000/
+```
+
+Run the client
+```bash
+npm run dev
+```
+
+
+
+
+##### Client URL: http://localhost:5173/
+
+##### Server URL: http://localhost:3000/
+## API Reference(server)
+http://localhost:3000/
+#### Get all items
+
+```http
+  GET /api/data?page={page}
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `page` | `integer` | **optional**. Page number |
+
+
+
+
