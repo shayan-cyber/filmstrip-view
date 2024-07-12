@@ -57,16 +57,13 @@ function ImageCarousel({ imageData, setImageData, setSelectedImage, selectedImag
                 {imageData && imageData.slice(index, index + items).map((item, key) => {
                     return (
                         <div className='cursor-pointer group' onClick={() => setSelectedImage(item)} key={key}>
-                            <div className={`hover:border-4 border-4 border-transparent rounded-md hover:border-gray-200 ${selectedImage.id === item.id && "border-red-800 hover:border-red-800"}  p-1 w-full`}>
+                            <div className={`hover:border-4 border-4 border-transparent rounded-md hover:border-gray-200 ${selectedImage.id === item.id && "!border-red-800 "}  p-1 w-full`}>
                                 <img src={item?.image} height="40" className='h-40 w-full' />
                             </div>
 
                             <div className='flex justify-center'>
-
                                 <div className={`group-hover:bg-gray-300 bg-gray-200 ${selectedImage.id === item.id && "bg-red-800 group-hover:bg-red-800 text-white"} rounded-full px-4 p-1 text-center mt-2 `}>
-
                                     <h1 className='text-[.6rem]'> {item.thumbnail.toString().split('/').pop()}</h1>
-
                                 </div>
 
                             </div>
