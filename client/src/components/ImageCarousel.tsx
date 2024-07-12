@@ -1,10 +1,39 @@
 import React, { useState } from 'react'
 import { ImageData } from '../../utils/types'
+import { getData } from '../../utils/apiCalls';
 
-function ImageCarousel({ imageData, setSelectedImage, selectedImage }: { imageData: ImageData[], setSelectedImage: React.Dispatch<React.SetStateAction<ImageData | undefined>> , selectedImage:ImageData}) {
+interface props {
+    imageData: ImageData[],
+    setImageData: React.Dispatch<React.SetStateAction<ImageData[] | []>>,
+    setSelectedImage: React.Dispatch<React.SetStateAction<ImageData | undefined>>,
+    selectedImage: ImageData,
+    page:number,
+    setPage:React.Dispatch<React.SetStateAction<number>>,
+    totalPages:number
+}
+
+
+function ImageCarousel({ imageData, setImageData, setSelectedImage, selectedImage, page, setPage, totalPages }: props) {
     const [index, setIndex] = useState(0)
     const items = 4;
+
+
     const handleNextClick = () => {
+
+        // calling nextpage data from server when only items=4 are left to view (for fetching the next page before the use reaches the last 4 images)
+        if(page < totalPages){
+            if(items+index === imageData.length - items ){
+                // call again
+                console.log("next page call");
+                getData(page+1).then((res)=>{
+                    setImageData([...imageData, ...res?.results?.items])
+                    setPage(res?.results?.page)
+                }).catch((e)=>{
+                    console.log({e});
+                    alert("Something Went Wrong")
+                })
+            }
+        }
         if (index + items < imageData.length) {
             setIndex(index + items);
         }
@@ -25,9 +54,9 @@ function ImageCarousel({ imageData, setSelectedImage, selectedImage }: { imageDa
             </button>
 
             <div className='grid grid-cols-4 px-6 '>
-                {imageData && imageData.slice(index, index + items).map((item) => {
+                {imageData && imageData.slice(index, index + items).map((item, key) => {
                     return (
-                        <div className='cursor-pointer group' onClick={() => setSelectedImage(item)}>
+                        <div className='cursor-pointer group' onClick={() => setSelectedImage(item)} key={key}>
                             <div className={`hover:border-4 border-4 border-transparent rounded-md hover:border-gray-200 ${selectedImage.id === item.id && "border-red-800 hover:border-red-800"}  p-1 w-full`}>
                                 <img src={item?.image} height="40" className='h-40 w-full' />
                             </div>
