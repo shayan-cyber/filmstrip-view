@@ -6,7 +6,7 @@ This project requires you to develop a website template viewer. The template vie
 
 ## Screenshots
 
-![App Screenshot](https://i.imgur.com/kjItwAu.png)
+![App Screenshot](https://i.imgur.com/JG3Ds7c.png)
 
 
 ## Features
