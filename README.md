@@ -4,6 +4,14 @@
 This project requires you to develop a website template viewer. The template viewer is modeled after the filmstrip folder view in Windows Explorer.
 
 
+## Preview
+### Client:
+https://filmstrip-view.vercel.app/
+
+### Backend
+https://filmstrip-view.onrender.com/api/data
+
+
 ## Screenshots
 
 ![App Screenshot](https://i.imgur.com/JG3Ds7c.png)
