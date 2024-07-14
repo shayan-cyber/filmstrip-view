@@ -3,13 +3,13 @@ import { ImageData } from '../../utils/types'
 
 function PreviewCard({ imageData }: { imageData: ImageData }) {
     return (
-        <div className='flex justify-center py-6 gap-4 w-full'>
-            <div className='w-[70%]'>
+        <div className='flex-col md:flex-row flex justify-center py-4 md:py-6 gap-4 w-full'>
+            <div className='w-full md:w-[70%]'>
                 <div className='shadow-xl px-4 py-2 w-full'>
-                    <img src={imageData.image} className='h-[450px] w-[100%]'  />
+                    <img src={imageData.image} className='h-[300px] md:h-[450px] w-[100%]'  />
                 </div>
             </div>
-            <div className='text-left w-[45%]'>
+            <div className='text-left w-full md:w-[45%]'>
                 <div className='border-t-[1px] border-gray-300   py-2 flex justify-start items-center gap-2'>
                     <div className='bg-[#555] p-1 uppercase' >
 

@@ -35,9 +35,9 @@ function FlimStripView() {
 
     <>
       {loading ? (<SkeletonLoader/>) : (
-        <div className='shadow-2xl p-6 bg-white max-w-[65vw] w-full border-[1px] border-[#ccc]'>
-          <h1 className='text-[2rem]'>FilmStrip View </h1>
-          <hr className='my-4 border-[1px]' />
+        <div className='shadow-2xl p-4 md:p-6 bg-white max-w-full md:max-w-[65vw] w-full border-[1px] border-[#ccc]'>
+          <h1 className='text-[1.4rem] md:text-[2rem]'>FilmStrip View </h1>
+          <hr className='my-2 md:my-4 border-[1px]' />
           {selectedImage && (
             <PreviewCard imageData={selectedImage} />
           )}
